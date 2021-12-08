@@ -1,0 +1,1306 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+<style>
+    ::-webkit-scrollbar {
+        width: 0px;
+        /* Remove scrollbar space */
+        background: transparent;
+        /* Optional: just make scrollbar invisible */
+    }
+</style>
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- Dashboard Ecommerce Starts -->
+            <section id="dashboard-ecommerce">
+                <div class="row match-height">
+                    <!-- Medal Card -->
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="card card-congratulation-medal">
+                            <div class="card-body">
+                                <h4>{{user.username}}</h4>
+                                <p class="card-text font-small-3">Details pending</p>
+                                <p>Timings</p>
+                                <button type="button" class="btn btn-primary">Visit</button>
+                                <img src="{% static 'app-assets/images/pages/calendar-illustration.png'%}"
+                                    class="congratulation-medal h-75 m-1" alt="Medal Pic" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Medal Card -->
+
+                    <!-- Statistics Card -->
+                    <div class="col-xl-8 col-md-6 col-12">
+                        <div class="card card-statistics">
+                            <div class="card-header">
+                                <h4 class="card-title">Statistics</h4>
+                                <div class="d-flex align-items-center">
+
+                                </div>
+                            </div>
+                            <div class="card-body statistics-body">
+                                <div class="row">
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="trending-up" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">23</h4>
+                                                <p class="card-text font-small-3 mb-0">Patient Added</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <div class="media">
+                                            <div class="avatar bg-light-info mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="user" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">10</h4>
+                                                <p class="card-text font-small-3 mb-0">Patient Viewd</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                                        <div class="media">
+                                            <div class="avatar bg-light-danger mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="box" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">10</h4>
+                                                <p class="card-text font-small-3 mb-0">Doctors</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 col-12">
+                                        <div class="media">
+                                            <div class="avatar bg-light-success mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="dollar-sign" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">2</h4>
+                                                <p class="card-text font-small-3 mb-0">In-Active Doctors</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Statistics Card -->
+                </div>
+
+
+
+                <div class="row match-height">
+                    <!-- Company Table Card -->
+                    <div class="col-lg-8 col-12">
+                        <div class="card card-company-table">
+                            <div class="card-header border-bottom d-flex">
+                                <h4 class="card-title">All Doctors</h4>
+                                <div>
+                                    <a class="btn btn-primary" href="{% url 'dashboard:user_profile' %}">Add Doctor</a>
+                                    <a class="btn btn-primary" data-toggle="modal" data-target="#Addpatient">Add
+                                        Patient</a>
+
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Specialization</th>
+                                                <th>Email</th>
+                                                <th>Availability</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/star.svg' %}"
+                                                                    alt="Star svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Owning</div>
+                                                            <div class="font-small-2 text-muted">us@cuhil.gov</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Technology</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">214</span>
+                                                        <span class="font-small-2 text-muted">in 24 hours</span>
+                                                    </div>
+                                                </td>
+                                                <td>$291.01</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">88%</span>
+                                                        <i data-feather="trending-up"
+                                                            class="text-success font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/book.svg' %}"
+                                                                    alt="Book svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Cafés</div>
+                                                            <div class="font-small-2 text-muted">pudais@jife.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Grocery</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">208</span>
+                                                        <span class="font-small-2 text-muted">in 1 week</span>
+                                                    </div>
+                                                </td>
+                                                <td>$783.93</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">16%</span>
+                                                        <i data-feather="trending-down"
+                                                            class="text-danger font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/rocket.svg' %}"
+                                                                    alt="Rocket svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Kmart</div>
+                                                            <div class="font-small-2 text-muted">bipri@cawiw.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Fashion</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">990</span>
+                                                        <span class="font-small-2 text-muted">in 1 month</span>
+                                                    </div>
+                                                </td>
+                                                <td>$780.05</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">78%</span>
+                                                        <i data-feather="trending-up"
+                                                            class="text-success font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/speaker.svg' %}"
+                                                                    alt="Speaker svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Payers</div>
+                                                            <div class="font-small-2 text-muted">luk@izug.io</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Fashion</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">12.9k</span>
+                                                        <span class="font-small-2 text-muted">in 12 hours</span>
+                                                    </div>
+                                                </td>
+                                                <td>$531.49</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">42%</span>
+                                                        <i data-feather="trending-up"
+                                                            class="text-success font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Company Table Card -->
+                    <!-- Timeline Card -->
+                    <div class="col-lg-4 col-12">
+                        <div class="card card-user-timeline" style="height: 500px !important;">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <i data-feather="list" class="user-timeline-title-icon"></i>
+                                    <h4 class="card-title"> Timeline</h4>
+                                </div>
+                            </div>
+                            <div class="card-body"
+                                style="height: 500px !important;overflow:scroll; overflow-x: hidden;">
+                                <ul class="timeline ml-50">
+                                    <li class="timeline-item">
+                                        <span class="timeline-point timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>12 Invoices have been paid</h6>
+                                            <p>Invoices are paid to the company</p>
+                                            <div class="media align-items-center">
+                                                <img class="mr-1" src="../../../app-assets/images/icons/json.png"
+                                                    alt="data.json" height="23" />
+                                                <h6 class="media-body mb-0">data.json</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-warning timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Client Meeting</h6>
+                                            <p>Project meeting with Carl</p>
+                                            <div class="media align-items-center">
+                                                <div class="avatar mr-50">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg"
+                                                        alt="Avatar" width="38" height="38" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0">Carl Roy (Client)</h6>
+                                                    <p class="mb-0">CEO of Infibeam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-warning timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Client Meeting</h6>
+                                            <p>Project meeting with Carl</p>
+                                            <div class="media align-items-center">
+                                                <div class="avatar mr-50">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg"
+                                                        alt="Avatar" width="38" height="38" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0">Carl Roy (Client)</h6>
+                                                    <p class="mb-0">CEO of Infibeam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-warning timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Client Meeting</h6>
+                                            <p>Project meeting with Carl</p>
+                                            <div class="media align-items-center">
+                                                <div class="avatar mr-50">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg"
+                                                        alt="Avatar" width="38" height="38" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0">Carl Roy (Client)</h6>
+                                                    <p class="mb-0">CEO of Infibeam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-warning timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Client Meeting</h6>
+                                            <p>Project meeting with Carl</p>
+                                            <div class="media align-items-center">
+                                                <div class="avatar mr-50">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg"
+                                                        alt="Avatar" width="38" height="38" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0">Carl Roy (Client)</h6>
+                                                    <p class="mb-0">CEO of Infibeam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-warning timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Client Meeting</h6>
+                                            <p>Project meeting with Carl</p>
+                                            <div class="media align-items-center">
+                                                <div class="avatar mr-50">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg"
+                                                        alt="Avatar" width="38" height="38" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0">Carl Roy (Client)</h6>
+                                                    <p class="mb-0">CEO of Infibeam</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-info timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Create a new project</h6>
+                                            <p>Add files to new design folder</p>
+                                            <div class="avatar-group">
+                                                <div data-toggle="tooltip" data-popup="tooltip-custom"
+                                                    data-placement="bottom" data-original-title="Billy Hopkins"
+                                                    class="avatar pull-up">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg"
+                                                        alt="Avatar" width="33" height="33" />
+                                                </div>
+                                                <div data-toggle="tooltip" data-popup="tooltip-custom"
+                                                    data-placement="bottom" data-original-title="Amy Carson"
+                                                    class="avatar pull-up">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg"
+                                                        alt="Avatar" width="33" height="33" />
+                                                </div>
+                                                <div data-toggle="tooltip" data-popup="tooltip-custom"
+                                                    data-placement="bottom" data-original-title="Brandon Miles"
+                                                    class="avatar pull-up">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg"
+                                                        alt="Avatar" width="33" height="33" />
+                                                </div>
+                                                <div data-toggle="tooltip" data-popup="tooltip-custom"
+                                                    data-placement="bottom" data-original-title="Daisy Weber"
+                                                    class="avatar pull-up">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-7.jpg"
+                                                        alt="Avatar" width="33" height="33" />
+                                                </div>
+                                                <div data-toggle="tooltip" data-popup="tooltip-custom"
+                                                    data-placement="bottom" data-original-title="Jenny Looper"
+                                                    class="avatar pull-up">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg"
+                                                        alt="Avatar" width="33" height="33" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <span
+                                            class="timeline-point timeline-point-danger timeline-point-indicator"></span>
+                                        <div class="timeline-event">
+                                            <h6>Update project for client</h6>
+                                            <p class="mb-0">Update files as per new design</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Timeline Card -->
+
+                </div>
+                <div class="row match-height">
+                    <!-- Company Table Card -->
+                    <div class="col-lg-12 col-12">
+                        <div class="card card-company-table">
+                            <div class="card-header border-bottom d-flex">
+                                <h4 class="card-title">Patient Details</h4>
+                                <div>
+                                    <a class="btn btn-primary">Add Doctor</a>
+                                    <a class="btn btn-primary">Add Patient</a>
+
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Specialization</th>
+                                                <th>Email</th>
+                                                <th>Availability</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/star.svg' %}"
+                                                                    alt="Star svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Owning</div>
+                                                            <div class="font-small-2 text-muted">us@cuhil.gov</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Technology</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">214</span>
+                                                        <span class="font-small-2 text-muted">in 24 hours</span>
+                                                    </div>
+                                                </td>
+                                                <td>$291.01</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">88%</span>
+                                                        <i data-feather="trending-up"
+                                                            class="text-success font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/book.svg' %}"
+                                                                    alt="Book svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Cafés</div>
+                                                            <div class="font-small-2 text-muted">pudais@jife.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Grocery</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">208</span>
+                                                        <span class="font-small-2 text-muted">in 1 week</span>
+                                                    </div>
+                                                </td>
+                                                <td>$783.93</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">16%</span>
+                                                        <i data-feather="trending-down"
+                                                            class="text-danger font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/rocket.svg' %}"
+                                                                    alt="Rocket svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Kmart</div>
+                                                            <div class="font-small-2 text-muted">bipri@cawiw.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Fashion</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">990</span>
+                                                        <span class="font-small-2 text-muted">in 1 month</span>
+                                                    </div>
+                                                </td>
+                                                <td>$780.05</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">78%</span>
+                                                        <i data-feather="trending-up"
+                                                            class="text-success font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded">
+                                                            <div class="avatar-content">
+                                                                <img src="{% static 'app-assets/images/icons/speaker.svg' %}"
+                                                                    alt="Speaker svg" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="font-weight-bolder">Payers</div>
+                                                            <div class="font-small-2 text-muted">luk@izug.io</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+
+                                                        <span>Fashion</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">12.9k</span>
+                                                        <span class="font-small-2 text-muted">in 12 hours</span>
+                                                    </div>
+                                                </td>
+                                                <td>$531.49</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="font-weight-bolder mr-1">42%</span>
+                                                        <i data-feather="trending-up"
+                                                            class="text-success font-medium-1"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--/ Company Table Card -->
+
+
+
+
+                </div>
+            </section>
+            <!-- Advanced Search -->
+            <section id="advanced-search-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header border-bottom">
+                                <h4 class="card-title">Advanced Search</h4>
+                            </div>
+                            <!--Search Form -->
+                            <div class="card-body mt-2">
+                                <form class="dt_adv_search" method="POST">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-row mb-1">
+                                                <div class="col-lg-4">
+                                                    <label>Name:</label>
+                                                    <input type="text" class="form-control dt-input dt-full-name"
+                                                        data-column="1" placeholder="Alaric Beslier"
+                                                        data-column-index="0" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Email:</label>
+                                                    <input type="text" class="form-control dt-input" data-column="2"
+                                                        placeholder="demo@example.com" data-column-index="1" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Post:</label>
+                                                    <input type="text" class="form-control dt-input" data-column="3"
+                                                        placeholder="Web designer" data-column-index="2" />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-lg-4">
+                                                    <label>City:</label>
+                                                    <input type="text" class="form-control dt-input" data-column="4"
+                                                        placeholder="Balky" data-column-index="3" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Date:</label>
+                                                    <div class="form-group mb-0">
+                                                        <input type="text"
+                                                            class="form-control dt-date flatpickr-range dt-input"
+                                                            data-column="5" placeholder="StartDate to EndDate"
+                                                            data-column-index="4" name="dt_date" />
+                                                        <input type="hidden"
+                                                            class="form-control dt-date start_date dt-input"
+                                                            data-column="5" data-column-index="4"
+                                                            name="value_from_start_date" />
+                                                        <input type="hidden"
+                                                            class="form-control dt-date end_date dt-input"
+                                                            name="value_from_end_date" data-column="5"
+                                                            data-column-index="4" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>Salary:</label>
+                                                    <input type="text" class="form-control dt-input" data-column="6"
+                                                        placeholder="10000" data-column-index="5" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr class="my-0" />
+                            <div class="card-datatable">
+                                <table class="dt-advanced-search table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Post</th>
+                                            <th>City</th>
+                                            <th>Date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Post</th>
+                                            <th>City</th>
+                                            <th>Date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr class="odd">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Korrie O'Crevy</td>
+                                            <td>kocrevy0@thetimes.co.uk</td>
+                                            <td>Nuclear Power Engineer</td>
+                                            <td>Krasnosilka</td>
+                                            <td>09/23/2016</td>
+                                            <td>$23896.35</td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Bailie Coulman</td>
+                                            <td>bcoulman1@yolasite.com</td>
+                                            <td>VP Quality Control</td>
+                                            <td>Hinigaran</td>
+                                            <td>05/20/2018</td>
+                                            <td>$13633.69</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Stella Ganderton</td>
+                                            <td>sganderton2@tuttocitta.it</td>
+                                            <td>Operator</td>
+                                            <td>Golcowa</td>
+                                            <td>03/24/2018</td>
+                                            <td>$13076.28</td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Dorolice Crossman</td>
+                                            <td>dcrossman3@google.co.jp</td>
+                                            <td>Cost Accountant</td>
+                                            <td>Paquera</td>
+                                            <td>12/03/2017</td>
+                                            <td>$12336.17</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Harmonia Nisius</td>
+                                            <td>hnisius4@gnu.org</td>
+                                            <td>Senior Cost Accountant</td>
+                                            <td>Lucan</td>
+                                            <td>08/25/2017</td>
+                                            <td>$10909.52</td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Genevra Honeywood</td>
+                                            <td>ghoneywood5@narod.ru</td>
+                                            <td>Geologist</td>
+                                            <td>Maofan</td>
+                                            <td>06/01/2017</td>
+                                            <td>$17803.80</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Eileen Diehn</td>
+                                            <td>ediehn6@163.com</td>
+                                            <td>Environmental Specialist</td>
+                                            <td>Lampuyang</td>
+                                            <td>10/15/2017</td>
+                                            <td>$18991.67</td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Richardo Aldren</td>
+                                            <td>raldren7@mtv.com</td>
+                                            <td>Senior Sales Associate</td>
+                                            <td>Skoghall</td>
+                                            <td>11/05/2016</td>
+                                            <td>$19230.13</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Allyson Moakler</td>
+                                            <td>amoakler8@shareasale.com</td>
+                                            <td>Safety Technician</td>
+                                            <td>Mogilany</td>
+                                            <td>12/29/2018</td>
+                                            <td>$11677.32</td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td class="control sorting_1" tabindex="0"></td>
+                                            <td>Merline Penhalewick</td>
+                                            <td>mpenhalewick9@php.net</td>
+                                            <td>Junior Executive</td>
+                                            <td>Kanuma</td>
+                                            <td>04/19/2019</td>
+                                            <td>$15939.52</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ Advanced Search -->
+            <!-- Dashboard Ecommerce ends -->
+
+            <!-- ----------------------------------------[Modals]---------------------------------- -->
+            
+            <!--Add-patient  Modal -->
+            <div class="modal fade text-left" id="Addpatient" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel17" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg bg-transperent" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-white">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body py-2">
+
+                            <h1 class="text-center mb-1" id="createAppTitle">Add Patient</h1>
+                            <p class="text-center mb-2">Provide application data with this form</p>
+                            <div class="bs-stepper vertical wizard-modern modern-vertical-wizard-example">
+                                <div class="bs-stepper-header">
+                                    <div class="step" data-target="#account-details-vertical-modern">
+                                        <button type="button" class="step-trigger">
+                                            <span class="bs-stepper-box">
+                                                <i data-feather="file-text" class="font-medium-3"></i>
+                                            </span>
+                                            <span class="bs-stepper-label">
+                                                <span class="bs-stepper-title">Account Details</span>
+                                                <span class="bs-stepper-subtitle">Setup Account Details</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="step" data-target="#personal-info-vertical-modern">
+                                        <button type="button" class="step-trigger">
+                                            <span class="bs-stepper-box">
+                                                <i data-feather="user" class="font-medium-3"></i>
+                                            </span>
+                                            <span class="bs-stepper-label">
+                                                <span class="bs-stepper-title">Personal Info</span>
+                                                <span class="bs-stepper-subtitle">Add Personal Info</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                                <div class="bs-stepper-content mr-2 mb-3">
+                                    <div id="account-details-vertical-modern" class="content">
+                                        <div class="content-header">
+                                            <h5 class="mb-0">Account Details</h5>
+                                            <small class="text-muted">Enter Your Account Details.</small>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="vertical-modern-username">Username</label>
+                                                <input type="text" id="vertical-modern-username" class="form-control"
+                                                    placeholder="johndoe" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="vertical-modern-email">Email</label>
+                                                <input type="email" id="vertical-modern-email" class="form-control"
+                                                    placeholder="john.doe@email.com" aria-label="john.doe" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="vertical-modern-password">Password</label>
+                                                <input type="password" id="vertical-modern-password"
+                                                    class="form-control"
+                                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label" for="vertical-modern-confirm-password">Confirm
+                                                    Password</label>
+                                                <input type="password" id="vertical-modern-confirm-password"
+                                                    class="form-control"
+                                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <button class="btn btn-outline-secondary btn-prev" disabled>
+                                                <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                            </button>
+                                            <button class="btn btn-primary btn-next">
+                                                <span class="align-middle d-sm-inline-block d-none">Next</span>
+                                                <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="personal-info-vertical-modern" class="content">
+                                        <div class="content-header">
+                                            <h5 class="mb-0">Personal Info</h5>
+                                            <small>Enter Your Personal Info.</small>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="vertical-modern-first-name">First
+                                                    Name</label>
+                                                <input type="text" id="vertical-modern-first-name" class="form-control"
+                                                    placeholder="John" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="vertical-modern-last-name">Last
+                                                    Name</label>
+                                                <input type="text" id="vertical-modern-last-name" class="form-control"
+                                                    placeholder="Doe" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="vertical-modern-country">Country</label>
+                                                <select class="select2 w-100" id="vertical-modern-country">
+                                                    <option label=" "></option>
+                                                    <option>UK</option>
+                                                    <option>USA</option>
+                                                    <option>Spain</option>
+                                                    <option>France</option>
+                                                    <option>Italy</option>
+                                                    <option>Australia</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="vertical-modern-language">Language</label>
+                                                <select class="select2 w-100" id="vertical-modern-language" multiple>
+                                                    <option>English</option>
+                                                    <option>French</option>
+                                                    <option>Spanish</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <button class="btn btn-primary btn-prev">
+                                                <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                            </button>
+                                            <button class="btn btn-success btn-submit">Submit</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+{% endblock content %}
+{% block scripts %}
+<script>
+    /**
+ * DataTables Advanced
+ */
+
+
+
+    // Advanced Search Functions Starts
+    // --------------------------------------------------------------------
+
+    // Filter column wise function
+    function filterColumn(i, val) {
+        if (i == 5) {
+            var startDate = $('.start_date').val(),
+                endDate = $('.end_date').val();
+            if (startDate !== '' && endDate !== '') {
+                filterByDate(i, startDate, endDate); // We call our filter function
+            }
+
+
+            $('.dt-advanced-search').dataTable().fnDraw();
+        } else {
+            $('.dt-advanced-search').DataTable().column(i).search(val, false, true).draw();
+        }
+    }
+
+    // Datepicker for advanced filter
+    var separator = ' - ',
+        rangePickr = $('.flatpickr-range'),
+        dateFormat = 'MM/DD/YYYY';
+    var options = {
+        autoUpdateInput: false,
+        autoApply: true,
+        locale: {
+            format: dateFormat,
+            separator: separator
+        },
+        opens: $('html').attr('data-textdirection') === 'rtl' ? 'left' : 'right'
+    };
+
+    //
+    if (rangePickr.length) {
+        rangePickr.flatpickr({
+            mode: 'range',
+            dateFormat: 'm/d/Y',
+            onClose: function (selectedDates, dateStr, instance) {
+                var startDate = '',
+                    endDate = new Date();
+                if (selectedDates[0] != undefined) {
+                    startDate =
+                        selectedDates[0].getMonth() + 1 + '/' + selectedDates[0].getDate() + '/' + selectedDates[0].getFullYear();
+                    $('.start_date').val(startDate);
+                }
+                if (selectedDates[1] != undefined) {
+                    endDate =
+                        selectedDates[1].getMonth() + 1 + '/' + selectedDates[1].getDate() + '/' + selectedDates[1].getFullYear();
+                    $('.end_date').val(endDate);
+                }
+                $(rangePickr).trigger('change').trigger('keyup');
+            }
+        });
+    }
+
+    // Advance filter function
+    // We pass the column location, the start date, and the end date
+    var filterByDate = function (column, startDate, endDate) {
+        // Custom filter syntax requires pushing the new filter to the global filter array
+        $.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
+            var rowDate = normalizeDate(aData[column]),
+                start = normalizeDate(startDate),
+                end = normalizeDate(endDate);
+
+            // If our date from the row is between the start and end
+            if (start <= rowDate && rowDate <= end) {
+                return true;
+            } else if (rowDate >= start && end === '' && start !== '') {
+                return true;
+            } else if (rowDate <= end && start === '' && end !== '') {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    };
+
+    // converts date strings to a Date object, then normalized into a YYYYMMMDD format (ex: 20131220). Makes comparing dates easier. ex: 20131220 > 20121220
+    var normalizeDate = function (dateString) {
+        var date = new Date(dateString);
+        var normalized =
+            date.getFullYear() + '' + ('0' + (date.getMonth() + 1)).slice(-2) + '' + ('0' + date.getDate()).slice(-2);
+        return normalized;
+    };
+    // Advanced Search Functions Ends
+
+    $(function () {
+        // var isRtl = $('html').attr('data-textdirection') === 'rtl';
+        alert("test")
+        var dt_ajax_table = $('.datatables-ajax'),
+            dt_filter_table = $('.dt-column-search'),
+            dt_adv_filter_table = $('.dt-advanced-search'),
+            dt_responsive_table = $('.dt-responsive'),
+            assetPath = '../../../app-assets/';
+
+        if ($('body').attr('data-framework') === 'laravel') {
+            assetPath = $('body').attr('data-asset-path');
+        }
+
+        // Ajax Sourced Server-side
+        // --------------------------------------------------------------------
+
+        if (dt_ajax_table.length) {
+            var dt_ajax = dt_ajax_table.dataTable({
+                processing: true,
+                dom:
+                    '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                ajax: assetPath + 'data/ajax.php',
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                }
+            });
+        }
+
+        // Column Search
+        // --------------------------------------------------------------------
+
+        if (dt_filter_table.length) {
+            // Setup - add a text input to each footer cell
+            $('.dt-column-search thead tr').clone(true).appendTo('.dt-column-search thead');
+            $('.dt-column-search thead tr:eq(1) th').each(function (i) {
+                var title = $(this).text();
+                $(this).html('<input type="text" class="form-control form-control-sm" placeholder="Search ' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (dt_filter.column(i).search() !== this.value) {
+                        dt_filter.column(i).search(this.value).draw();
+                    }
+                });
+            });
+
+            var dt_filter = dt_filter_table.DataTable({
+                ajax: assetPath + 'data/table-datatable.json',
+                columns: [
+                    { data: 'full_name' },
+                    { data: 'email' },
+                    { data: 'post' },
+                    { data: 'city' },
+                    { data: 'start_date' },
+                    { data: 'salary' }
+                ],
+                dom:
+                    '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                orderCellsTop: true,
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                }
+            });
+        }
+
+        // Advanced Search
+        // --------------------------------------------------------------------
+
+        // Advanced Filter table
+        if (dt_adv_filter_table.length) {
+            var dt_adv_filter = dt_adv_filter_table.DataTable({
+                ajax: assetPath + 'data/table-datatable.json',
+                columns: [
+                    { data: 'responsive_id' },
+                    { data: 'full_name' },
+                    { data: 'email' },
+                    { data: 'post' },
+                    { data: 'city' },
+                    { data: 'start_date' },
+                    { data: 'salary' }
+                ],
+
+                columnDefs: [
+                    {
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }
+                ],
+                dom:
+                    '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                orderCellsTop: true,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                var data = row.data();
+                                return 'Details of ' + data['full_name'];
+                            }
+                        }),
+                        type: 'column',
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                            tableClass: 'table'
+                        })
+                    }
+                },
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                }
+            });
+        }
+
+        // on key up from input field
+        $('input.dt-input').on('keyup', function () {
+            alert("test")
+            filterColumn($(this).attr('data-column'), $(this).val());
+        });
+
+        // Responsive Table
+        // --------------------------------------------------------------------
+
+        if (dt_responsive_table.length) {
+            var dt_responsive = dt_responsive_table.DataTable({
+                ajax: assetPath + 'data/table-datatable.json',
+                columns: [
+                    { data: 'responsive_id' },
+                    { data: 'full_name' },
+                    { data: 'email' },
+                    { data: 'post' },
+                    { data: 'city' },
+                    { data: 'start_date' },
+                    { data: 'salary' },
+                    { data: 'age' },
+                    { data: 'experience' },
+                    { data: 'status' }
+                ],
+                columnDefs: [
+                    {
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    },
+                    {
+                        // Label
+                        targets: -1,
+                        render: function (data, type, full, meta) {
+                            var $status_number = full['status'];
+                            var $status = {
+                                1: { title: 'Current', class: 'badge-light-primary' },
+                                2: { title: 'Professional', class: ' badge-light-success' },
+                                3: { title: 'Rejected', class: ' badge-light-danger' },
+                                4: { title: 'Resigned', class: ' badge-light-warning' },
+                                5: { title: 'Applied', class: ' badge-light-info' }
+                            };
+                            if (typeof $status[$status_number] === 'undefined') {
+                                return data;
+                            }
+                            return (
+                                '<span class="badge badge-pill ' +
+                                $status[$status_number].class +
+                                '">' +
+                                $status[$status_number].title +
+                                '</span>'
+                            );
+                        }
+                    }
+                ],
+                dom:
+                    '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                var data = row.data();
+                                return 'Details of ' + data['full_name'];
+                            }
+                        }),
+                        type: 'column',
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                            tableClass: 'table'
+                        })
+                    }
+                },
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                }
+            });
+        }
+
+        // // Filter form control to default size for all tables
+        $('.dataTables_filter .form-control').removeClass('form-control-sm');
+        $('.dataTables_length .custom-select').removeClass('custom-select-sm').removeClass('form-control-sm');
+    });
+
+</script>
+<script>
+    $('#info_form').submit(function (e) {
+        e.preventDefault();
+        alert('Please enter')
+    })
+</script>
+{% endblock scripts %}

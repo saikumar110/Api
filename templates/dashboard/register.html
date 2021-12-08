@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <div class="auth-wrapper auth-v2">
+                <div class="auth-inner row m-0">
+                    <!-- Brand logo--><a class="brand-logo">
+                        <img src="{% static 'app-assets/images/logo.png' %}" class="logo" alt="">
+                        <h1 class="brand-text text-primary   my-auto">MedBoto</h1>
+                    </a>
+                    <!-- /Brand logo-->
+                    <!-- Left Text-->
+                    <div class="d-none d-lg-flex col-lg-8 align-items-center ">
+                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img
+                                class="img-fluid" src="{% static 'app-assets/images/pages/register-v2.svg' %}"
+                                alt="Register V2" /></div>
+                    </div>
+                    <!-- /Left Text-->
+                    <!-- Register-->
+                    <div class="d-flex col-lg-4 align-items-center auth-bg  p-lg-5">
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                            <h2 class="card-title font-weight-bold mb-1 text-center">A Modern Approch to Primary Care 🚀
+                            </h2>
+                            <p class="card-text mb-2">Better Care for Your Family, Every Day</p>
+                            <form class="auth-register-form mt-1 py-auto" enctype="multipart/form-data"
+                                action="{% url 'dashboard:register'%}" method="POST" id="form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="form-label" for="register-username">Hospital Name</label>
+                                    <input class="form-control" id="username" type="text" name="register-username"
+                                        placeholder="Hospital" aria-describedby="register-username" autofocus=""
+                                        tabindex="1" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="register-email">Email</label>
+                                    <input class="form-control" id="email" type="text" name="register-email"
+                                        placeholder="MedBoto@example.com" aria-describedby="register-email"
+                                        tabindex="2" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="register-password">Password</label>
+                                    <div class="input-group input-group-merge form-password-toggle">
+                                        <input class="form-control form-control-merge" id="register-password"
+                                            type="password" name="register-password" placeholder="············"
+                                            aria-describedby="register-password" tabindex="3" />
+                                        <div class="input-group-append"><span class="input-group-text cursor-pointer"><i
+                                                    data-feather="eye"></i></span></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customFile1">Hospital Logo</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="profile" id="customFile1"
+                                            required />
+                                        <label class="custom-file-label" for="customFile1">Hospital Logo</label>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-1">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" required
+                                            id="validationCheck" name="validationCheck" />
+                                        <label class="custom-control-label" for="validationCheck">Agree to our terms and
+                                            conditions</label>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary btn-outline-success btn-block" tabindex="5">Sign
+                                    up</button>
+                            </form>
+                            <p class="text-center mt-1"><span>Already have an account?</span><a
+                                    href="{% url 'dashboard:login' %}"><span>&nbsp;Login</span></a></p>
+
+
+                        </div>
+                    </div>
+                    <!-- /Register-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+{% block scripts %}
+<!-- Activation Messages -->
+
+{% if messages %}
+{% for msg in messages %}
+{% if msg.level_tag == 'success'%}
+<script> Swal.fire({
+        title: 'Activation Mail has been Sent !',
+        text: 'Activation mail has been sent which is valid for only 5 mins.',
+        icon: 'success',
+        customClass: {
+            confirmButton: 'btn btn-primary'
+        },
+        buttonsStyling: false
+    });</script>
+{% else %}
+<script>toastr.options.positionClass = 'toast-top-center';
+    toastr.options.timeOut = "4000"
+    toastr.error('{{msg.message}}');
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+
+
+
+<!-- <script>
+    toastr.options.positionClass = 'toast-top-center';
+    toastr.options.timeOut="1000"
+    // Validation/ A    vailability proporties
+    function Check_username(event) {
+        // Fetch the username from input
+        var name = event.target.value
+        $.ajax({
+            type: "POST",
+            url: "{% url 'dashboard:check_username'%}",
+            data: {
+                "username": name,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+            }
+        }).done(function (response) {
+            if (response['success'] == "true") { 
+                toastr.error("   Username Already Exists")
+                return true
+            }else{
+                return false
+            }
+           
+
+        })
+
+
+    }
+
+    function Check_email(event) {
+        // Fetch the username from input
+        var name = event.target.value
+        $.ajax({
+            type: "POST",
+            url: "{% url 'dashboard:check_email'%}",
+            data: {
+                "username": name,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+            }
+        }).done(function (response) {
+            if (response['success'] == "true") { 
+                toastr.error("   Username Already Exists")
+            }else{
+                return false
+            }
+            
+
+        })
+
+
+    }
+
+    function Register() {
+        if($('#form').valid()){
+            // Fetch input data 
+            var username = $('#username').val()
+            var email = $('#email').val()
+            // if(Check_email(username)=='false' && Check_username(username)=='false' ){
+            //     alert('Please enter')
+            // }
+        }
+    } -->
+
+
+
+
+
+</script>
+
+{% endblock scripts %}
